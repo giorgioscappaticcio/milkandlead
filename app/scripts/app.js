@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'duScroll'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -26,6 +27,15 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      }).when('/exhibitions', {
+        templateUrl: 'views/exhibitions.html',
+        controller: 'ExhibitionsCtrl'
+      }).when('/shop', {
+        templateUrl: 'views/shop.html',
+        controller: 'ShopCtrl'
+      }).when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl'
       })
       .otherwise({
         redirectTo: '/'

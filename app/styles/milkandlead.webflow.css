@@ -1,0 +1,354 @@
+body {
+  background-color: white;
+  background-image: url('../images/bg1.jpg');
+  background-size: cover;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  color: #333;
+  font-size: 14px;
+  line-height: 20px;
+}
+h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: 700;
+}
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700;
+}
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 0px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+}
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+}
+p {
+  margin-bottom: 5px;
+  line-height: 24px;
+}
+.button {
+  display: inline-block;
+  padding: 4px 15px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.tenda {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: black;
+}
+.tenda.no-bg {
+  background-color: transparent;
+}
+.navigation {
+  padding-right: 18px;
+  padding-left: 86px;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: black 1px 1px 3px 0px, black 0px 0px 6px 0px;
+}
+.tenda-single {
+  display: block;
+  height: 178px;
+}
+.tenda-single.tenda-home {
+  background-image: url('../images/tenda_home.png');
+  background-position: 50% 0px;
+  background-size: contain;
+}
+.tenda-single.tenda-about {
+  background-image: url('../images/tenda_about.png');
+  background-position: 100% 50%;
+  background-size: contain;
+}
+.tenda-single.exhibition {
+  background-image: url('../images/tenda_exhibition.png');
+  background-position: 100% 50%;
+  background-size: contain;
+}
+.tenda-single.shop {
+  background-size: 125px;
+}
+.tenda-single.tenda_contacts {
+  background-image: url('../images/tenda_contacts.png');
+  background-position: 100% 50%;
+  background-size: contain;
+}
+.tenda-single.tenda_shop {
+  background-image: url('../images/tenda_shop.png');
+  background-position: 100% 50%;
+  background-size: contain;
+}
+.tenda_wrapper {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: 178px;
+}
+.float-right {
+  float: right;
+}
+.stamp {
+  max-width: 50px;
+  margin-top: 12px;
+  padding-bottom: 12px;
+  float: left;
+}
+.typo-logo {
+  max-width: 160px;
+  margin-top: 20px;
+  float: right;
+}
+.nav-list {
+  padding-left: 0px;
+  color: white;
+  list-style-type: none;
+}
+.nav-link {
+  display: inline-block;
+  margin-top: 28px;
+  margin-left: 46px;
+  float: left;
+  font-size: 17px;
+}
+.social_icons {
+  position: relative;
+  width: 37px;
+  margin-top: 14px;
+  margin-left: 13px;
+  float: left;
+}
+.main_container_wrap {
+  margin-top: 20px;
+  padding-right: 50px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  background-color: rgba(0, 0, 0, 0.36);
+}
+.sub_nav {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fcfafa;
+  text-align: center;
+}
+.sub_main_content {
+  padding: 20px 33px;
+  background-color: rgba(0, 0, 0, 0.67);
+  color: #f7f2f2;
+  text-align: center;
+}
+.input {
+  margin-top: 9px;
+  margin-bottom: 0px;
+  padding-top: 8px;
+  padding-left: 14px;
+  background-color: rgba(3, 3, 3, 0.56);
+  color: #c9bfbf;
+}
+.front_flyer {
+  min-height: 315px;
+}
+.front_flyer.mementomori {
+  background-image: url('../images/gunther_banner.jpg');
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.back_flyer {
+  min-height: 315px;
+  padding-right: 33px;
+  padding-left: 33px;
+}
+.picture_flyer {
+  height: 315px;
+}
+.picture_thumb {
+  display: inline-block;
+  width: 15%;
+  margin-top: 20px;
+  margin-left: 20px;
+  background-image: url('../images/45518_444591792272627_25552758_n.jpg');
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.picture_thumb.thumb_1 {
+  background-color: #242222;
+  background-image: url('../images/io.jpg');
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-align: right;
+}
+@media (max-width: 991px) {
+  .tenda-single {
+    height: 139px;
+  }
+  .tenda_wrapper {
+    height: 140px;
+  }
+  .stamp {
+    max-width: 40px;
+  }
+  .typo-logo {
+    max-width: 111px;
+    margin-top: 21px;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+  .nav-list {
+    margin-top: -7px;
+  }
+  .nav-link {
+    margin-left: 23px;
+    font-size: 17px;
+  }
+  .social_icons {
+    margin-left: 3px;
+  }
+  .social_icons.twitter_icon {
+    position: static;
+  }
+}
+@media (max-width: 767px) {
+  .tenda-single {
+    height: 108px;
+  }
+  .tenda_wrapper {
+    height: 109px;
+  }
+  .stamp {
+    max-width: 76px;
+  }
+  .typo-logo {
+    max-width: 300px;
+    margin-left: 4px;
+    padding-left: 0px;
+    float: left;
+  }
+  .nav-list {
+    padding-left: 0px;
+  }
+  .nav-link {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    margin-left: 20px;
+    float: left;
+  }
+  .social_icons {
+    position: absolute;
+    top: -116px;
+    right: 31px;
+  }
+  .social_icons.fb_icon {
+    position: absolute;
+    right: 5px;
+  }
+  .social_icons.twitter_icon {
+    position: absolute;
+    top: -68px;
+    right: 34px;
+  }
+  .main_container_wrap {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  .mobile_cont {
+    display: block;
+  }
+  .information_flyer {
+    width: 100%;
+  }
+}
+@media (max-width: 479px) {
+  .navigation {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .tenda-single {
+    height: 61px;
+  }
+  .tenda_wrapper {
+    height: 61px;
+  }
+  .stamp {
+    max-width: 60px;
+  }
+  .typo-logo {
+    max-width: 192px;
+  }
+  .nav-link {
+    font-size: 13px;
+  }
+  .social_icons {
+    position: absolute;
+    top: -135px;
+    right: 3px;
+  }
+  .social_icons.fb_icon {
+    top: -139px;
+    right: 3px;
+  }
+  .social_icons.twitter_icon {
+    top: -95px;
+    right: 6px;
+  }
+  .main_container_wrap {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .sub_nav {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 14px;
+  }
+  .sub_main_content {
+    width: 100%;
+    margin-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .information_flyer {
+    margin-top: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: black;
+  }
+  .sub-nav_col {
+    border-bottom: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.27);
+  }
+}

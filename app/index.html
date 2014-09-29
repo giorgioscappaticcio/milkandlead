@@ -10,32 +10,94 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="stylesheet" type="text/css" href="styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="styles/webflow.css">
+    <link rel="stylesheet" type="text/css" href="styles/milkandlead.webflow.css">
+    <link rel="stylesheet" type="text/css" href="styles/milk_font.css">
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="milkandleadApp">
+  <body id="ng-app" ng-app="milkandleadApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">milkandlead</h3>
+    <!-- TENDA WRAPPER -->
+    <div class="w-hidden-small w-hidden-tiny tenda_wrapper" id="tenda_wrapper">
+      <div class="tenda no-bg" id="slide-home">
+        <div class="w-container">
+          <div class="tenda-single tenda-home"></div>
+        </div>
       </div>
-
-      <div ng-view=""></div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      <div class="tenda" id="slide-about">
+        <div class="w-container">
+          <div class="tenda-single tenda-about"></div>
+        </div>
+      </div>
+      <div class="tenda" id="slide-exhibition">
+        <div class="w-container">
+          <div class="tenda-single exhibition"></div>
+        </div>
+      </div>
+      <div class="tenda" id="slide-shop">
+        <div class="w-container">
+          <div class="tenda-single tenda_shop"></div>
+        </div>
+      </div>
+      <div class="tenda" id="slide-contact">
+        <div class="w-container">
+          <div class="tenda-single tenda_contacts"></div>
+        </div>
       </div>
     </div>
+    <!-- END TENDA WRAPPER -->
+
+    <!-- NAVIGATION -->
+    <div class="navigation" id="navigation" ng-controller="NavigationCtrl">
+      <div class="w-container">
+        <div class="w-row">
+          <a href="#slide-home" ng-click="changePanel('home')">
+            <div class="w-col w-col-3 w-clearfix">
+              <div class="stamp">
+                <img src="images/timbro_web.png" alt="5422e92f727645b904ee40dc_timbro_web.png">
+              </div>
+              <div class="typo-logo">
+                <img src="images/milkandlead_web.png" alt="5423013f045a2fbb0430874f_milkandlead_web.png">
+              </div>
+            </div>
+          </a>
+          <div class="w-col w-col-7">
+            <ul class="w-clearfix nav-list">
+              <li class="nav-link"><a ng-href="#/about" ng-click="changePanel('about')" >ABOUT</a></li>
+              <li class="nav-link"><a href="#/exhibitions" ng-click="changePanel('exhibition')">EXHIBITIONS</a></li>
+              <li class="nav-link"><a href="#/shop" ng-click="changePanel('shop')">SHOP</a></li>
+              <li class="nav-link"><a href="#/contact" ng-click="changePanel('contact')">CONTACT</a></li>
+            </ul>
+          </div>
+          <div class="w-col w-col-2">
+            <div class="social_icons">
+              <a href="https://www.facebook.com/MilkandLeadArtGalleryLondon?fref=ts" target="_blank">
+                <img src="images/Grunge-Facebook-Stamp-psd.png" alt="5422fbf68a632d4241caabe1_Grunge-Facebook-Stamp-psd.png">
+              </a>
+            </div>
+            <div class="social_icons twitter_icon">
+              <a href="https://twitter.com/MILKandLEAD" target="_blank">
+                <img src="images/twitter_web.png" alt="542303788a632d4241caaceb_twitter_web.png">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END NAVIGATION -->
+
+    <!-- MAIN -->
+    <div id="main" ng-view="">
+    </div>
+    <!-- END MAIN -->
+
+    
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -74,6 +136,11 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/services/wpapi.js"></script>
+        <script src="scripts/controllers/navigation.js"></script>
+        <script src="scripts/controllers/exhibitions.js"></script>
+        <script src="scripts/controllers/shop.js"></script>
+        <script src="scripts/controllers/contact.js"></script>
         <!-- endbuild -->
 </body>
 </html>
