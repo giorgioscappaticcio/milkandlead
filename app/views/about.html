@@ -1,20 +1,25 @@
-<div class="w-container main_container_wrap">
+<div class="w-container main_container_wrap animate-switch-container" ng-switch on="selection">
+  
+  <!-- SUBNAV -->
   <div id="sub-nav">
     <div class="w-row">
       <div class="w-col w-col-4">
-        <div class="sub_nav">
+        <div class="sub_nav" ng-click="selection = subnav[0]" ng-class="{active: selection == subnav[0]}">
           <div>ABOUT</div>
         </div>
       </div>
       <div class="w-col w-col-4">
-        <div class="sub_nav">
+        <div class="sub_nav" ng-click="selection = subnav[1]" ng-class="{active: selection == subnav[1]}">
           <div>SUPPORT&nbsp;US</div>
         </div>
       </div>
       <div class="w-col w-col-4"></div>
     </div>
   </div>
-  <div>
+  <!-- END SUBNAV -->
+  
+  <!-- ABOUT -->
+  <div class="animate-switch" ng-switch-when="about">
     <div class="sub_main_content">
       <p>MILKandLEAD is an independent art gallery organisation fouded on October the 22nd 2009 by Francesco Vertucci e Jasmine Balder.
         <br>The gallery has been active into the underground movements for over 5 years, exhibiting artists whose sign –we feel- is leaving a unique impression in this moment in history.
@@ -23,7 +28,10 @@
         <br>In 2012 Raffaella Mandriota has joined our team as Managing director and carrying on projects with Francesco Vertucci as Creative director and art curator.</p>
     </div>
   </div>
-  <div>
+  <!-- END ABOUT -->
+
+  <!-- SUPPORT US -->
+  <div class="animate-switch" ng-switch-when="support">
     <div class="sub_main_content">
       <div class="w-row">
         <div class="w-col w-col-6">
@@ -36,4 +44,6 @@
       </div>
     </div>
   </div>
+  <!-- END SUPPORT US -->
+
 </div>

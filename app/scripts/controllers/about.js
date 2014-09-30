@@ -9,9 +9,8 @@
  */
 angular.module('milkandleadApp')
   .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
+  	$scope.subnav = ['about','support'];
+    $scope.selection = $scope.subnav[0];
+
   });
