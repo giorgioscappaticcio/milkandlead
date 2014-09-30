@@ -31,9 +31,9 @@ angular.module('milkandleadApp')
 	    	if (greeting.posts[i].id == '368'){
 	    		//console.log(greeting.posts[i].custom_fields)
 	    		//console.log(greeting.posts[i]["custom_fields"]["wpcf-gallery-image"][0])
-	    		var filename = greeting.posts[i]["custom_fields"]["wpcf-gallery-image"][0];
+	    		var filename = greeting.posts[i]["custom_fields"]["wpcf-facebook-banner"];
 	    		//console.log (filename.replace(/\.[^/.]+$/, ""));
-	    		console.log (filename.splice(-4, 0, "-150x150"));
+	    		//console.log (filename.splice(-4, 0, "-150x150"));
 			};
 	    };
 	}, function(reason) {
