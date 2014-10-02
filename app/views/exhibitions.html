@@ -1,58 +1,53 @@
 <div class="w-container main_container_wrap">
-      <div id="sub-nav">
-        <div class="w-row">
-          <div class="w-col w-col-4"></div>
-          <div class="w-col w-col-4"></div>
-          <div class="w-col w-col-4">
-            <div class="w-form">
-              <form id="email-form" name="email-form" data-name="Email Form">
-                <label for="Search-2">Name:</label>
-                <input class="w-input input" id="Search-2" type="text" placeholder="Search Exhibitions" name="Search" data-name="Search">
-                <label for="email">Email Address:</label>
-              </form>
-              <div class="w-form-done">
-                <p>Thank you! Your submission has been received!</p>
-              </div>
-              <div class="w-form-fail">
-                <p>Oops! Something went wrong while submitting the form :(</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="sub_main_content">
-          <div class="front_flyer mementomori"></div>
-          <div class="picture_flyer">
-            <ul>
-              <li class="picture_thumb thumb_1"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb"></li>
-              <li class="picture_thumb thumb_1"></li>
-            </ul>
-          </div>
-          <div class="back_flyer">
-            <h2>MEMENTOMORI</h2>
-            <h3>Gunther Iscariot live darkambient concert</h3>
-            <p>A noisy street of central London.A door opens,we step in to an abandoned church,the grave sound leads &nbsp;to a circular room, the only light are candles,there are flowers and incense.&nbsp;Is "Pure Darkness",a funeral atmosphere,a sublime
-              pleasure.&nbsp;Memento Mori (Gunther Iscariot) &nbsp;liveDark Ambient&nbsp;concert collaborating for this event with A/Ona Alessia ( percussion) and Amir Shoat (ethnic instruments and vocals).</p>
-          </div>
+  
+  <!-- SUBNAV -->
+  <div id="sub-nav">
+    <div class="w-row">
+      <div class="w-col w-col-4"></div>
+      <div class="w-col w-col-4"></div>
+      <div class="w-col w-col-4">
+        <div class="w-form">
+          <input class="w-input input" id="Search-2" type="text" placeholder="Search Exhibitions" name="Search" data-name="Search">
         </div>
       </div>
     </div>
+  </div>
+  <!-- END SUBNAV -->
+
+  <!-- SINGLE EXHIBITION -->
+  <div style="margin-bottom:20px" ng-repeat="exhib in exhibObj track by $index">
+    
+    <div class="close-btn" ng-click="selection = subnav[1]">
+      <i class="icon-cancel"></i> Gallery
+    </div>
+    
+    <div class="close-btn" ng-click="selection = subnav[2]">
+      <i class="icon-cancel"></i> Info
+    </div>
+    
+    <div class="sub_main_content" ng-switch on="selection">
+      
+      <!-- Front -->
+      <div class="front_flyer mementomori" ng-style="set_flyerBg($index)" ng-switch-when="front"></div>
+
+      <!-- Pictures flyer -->
+      <div class="picture_flyer" ng-switch-when="pictures">
+        <ul>
+          <li class="picture_thumb thumb_1" ng-repeat="thumb in exhib.custom_fields['wpcf-gallery-image']">
+            <img ng-src="{{spiceThumb(thumb)}}" />
+          </li>
+        </ul>
+      </div>
+
+      <!-- Info -->
+      <div class="back_flyer" ng-switch-when="info">
+        <h2>MEMENTOMORI</h2>
+        <h3>Gunther Iscariot live darkambient concert</h3>
+        <p>A noisy street of central London.A door opens,we step in to an abandoned church,the grave sound leads &nbsp;to a circular room, the only light are candles,there are flowers and incense.&nbsp;Is "Pure Darkness",a funeral atmosphere,a sublime
+          pleasure.&nbsp;Memento Mori (Gunther Iscariot) &nbsp;liveDark Ambient&nbsp;concert collaborating for this event with A/Ona Alessia ( percussion) and Amir Shoat (ethnic instruments and vocals).</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
