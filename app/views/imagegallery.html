@@ -1,0 +1,20 @@
+<div class="overlay">
+	<div class="close-btn" ng-click="closeImageGallery()">
+		<i class="icon-cancel"></i>
+	</div>
+
+	
+		<div class="slide" ng-repeat="image in $parent.galleryAlbum" ng-show="image.visible" style="background-image:url({{image.source}})">
+	<!--       <img ng-src="{{image.source}}" /> -->
+	    </div>
+	    <div class="arrows">
+	      <a class="prev" href="" ng-click="prev()">
+	      	<img src="../images/left-arrow.png" />
+	      </a>
+	      <a class="next" href="" ng-click="next()">
+	      	<img src="../images/right-arrow.png" />
+	      </a>
+		</div>
+	
+
+</div>

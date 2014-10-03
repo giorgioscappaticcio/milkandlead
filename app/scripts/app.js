@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'duScroll'
+    'duScroll',
+    'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider) {
     $routeProvider

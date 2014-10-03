@@ -15,39 +15,51 @@
   <!-- END SUBNAV -->
 
   <!-- SINGLE EXHIBITION -->
-  <div style="margin-bottom:20px" ng-repeat="exhib in exhibObj track by $index">
+  <div class="exhib" ng-repeat="exhib in exhibObj track by $index" ng-mouseenter="opaco=true" ng-mouseleave="opaco=false">
     
-    <div class="close-btn" ng-click="selection = subnav[1]">
-      <i class="icon-cancel"></i> Gallery
+    <div class="close-btn" ng-click="selection = subnav[0]; opaco=true; closeBtn=false" ng-show="closeBtn">
+      <i class="icon-cancel"></i>
     </div>
+
+    <div class="exhib-nav" ng-show="opaco && !closeBtn">
+      <div class="exhib-nav-btn" ng-click="selection = subnav[1]; closeBtn=true">
+        <i class="icon-th-thumb"></i> Gallery
+      </div>
     
-    <div class="close-btn" ng-click="selection = subnav[2]">
-      <i class="icon-cancel"></i> Info
+      <div class="exhib-nav-btn" ng-click="selection = subnav[2]; closeBtn=true">
+        <i class="icon-info"></i> Info
+      </div>
     </div>
     
     <div class="sub_main_content" ng-switch on="selection">
       
       <!-- Front -->
-      <div class="front_flyer mementomori" ng-style="set_flyerBg($index)" ng-switch-when="front"></div>
+      <div class="front_flyer mementomori" ng-style="set_flyerBg($index)" ng-switch-when="front" ng-class="{opaco: opaco}">
+      </div>
 
       <!-- Pictures flyer -->
       <div class="picture_flyer" ng-switch-when="pictures">
         <ul>
-          <li class="picture_thumb thumb_1" ng-repeat="thumb in exhib.custom_fields['wpcf-gallery-image']">
+          <li class="picture_thumb thumb_1" dir-paginate="thumb in exhib.custom_fields['wpcf-gallery-image'] | itemsPerPage: thumbPerPage: returnString($index)" pagination-id="{{returnString($index)}}" ng-click="openImageGallery(exhib.custom_fields['wpcf-gallery-image'])">
             <img ng-src="{{spiceThumb(thumb)}}" />
           </li>
         </ul>
+        <dir-pagination-controls pagination-id="{{returnString($index)}}" template-url="./views/thumb_pagination.html"></dir-pagination-controls>
       </div>
 
       <!-- Info -->
       <div class="back_flyer" ng-switch-when="info">
-        <h2>MEMENTOMORI</h2>
-        <h3>Gunther Iscariot live darkambient concert</h3>
-        <p>A noisy street of central London.A door opens,we step in to an abandoned church,the grave sound leads &nbsp;to a circular room, the only light are candles,there are flowers and incense.&nbsp;Is "Pure Darkness",a funeral atmosphere,a sublime
-          pleasure.&nbsp;Memento Mori (Gunther Iscariot) &nbsp;liveDark Ambient&nbsp;concert collaborating for this event with A/Ona Alessia ( percussion) and Amir Shoat (ethnic instruments and vocals).</p>
+        <h2 ng-bind="exhib.title_plain"></h2>
+        <h3 ng-bind="exhib.custom_fields['wpcf-exhibition_date']"></h3>
+        <p ng-bind-html="exhib.content"></p>
       </div>
 
     </div>
   </div>
 
+</div>
+
+<!-- Image Gallery -->
+<div class="slide-animate-container">
+  <div class="slide-animate" ng-include="imageGallery.url"></div>
 </div>

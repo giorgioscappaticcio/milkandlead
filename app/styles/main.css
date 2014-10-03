@@ -1,7 +1,22 @@
-/* This changes must be replaced in WEBFLOW */
-
 /*  FONT */
+  /*  NAVIGATION  */
+  .nav-link a {
+    font-family: mostraoneregularregular;
+    font-size: 20px;
+  }
 
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: rgba(0,0,0,0.7);
+    }
+
+
+
+
+
+
+
+/* This changes must be replaced in WEBFLOW */
 
 
 
@@ -14,13 +29,30 @@
 }
 
 
+/*  SUB MAIN CONTENT  */
+.picture_flyer ul {
+  padding: 22px 0 0;
+  margin-left: -20px;
+  min-height: 270px;
+}
 
+  .picture_thumb {
+    width: 13%;
+    cursor: pointer;
+    border: 1px solid rgb(92, 92, 92);
+  }
+
+    .picture_thumb:hover {
+      opacity: 0.7;
+    }
 
 
 /* NAVIGATION */
 
 .nav-link {
+  padding: 6px;
   cursor: pointer;
+  margin-top: 20px !important;
 }
 
   .nav-list a{
@@ -61,3 +93,140 @@
   .sub_nav.active{
     background-color: rgba(0,0,0,0.37);
   }
+
+/*  Exhibition  */
+.exhib {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+  .exhib-nav {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 45%;
+    z-index: 99;
+  }
+
+    .exhib-nav-btn {
+      font-size: 16px;
+      color: rgb(78,78,78);
+      text-transform: uppercase;
+      display: inline-block;
+      padding:6px 10px 6px 6px;
+      border: 1px solid; 
+      cursor: pointer;
+      margin-right: 10px;
+      background-color: rgba(255,255,255,0.7);
+    }
+
+      .exhib-nav-btn:hover {
+        color: #fff;
+        background-color: rgb(78,78,78);
+      }
+
+    /*  Front Flyer Exhibtion  */
+
+    .front_flyer {
+      position: relative;
+    }
+
+      .front_flyer.opaco:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 91%;
+        top: 15px;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 9;
+      }
+
+/*  PAGINATION  */
+
+.pagination {
+  list-style: none;
+  text-align: right;
+}
+
+  .pagination li {
+    display: inline-block;
+    margin-left: 10px; 
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,.5);
+    cursor: pointer;
+    border: 1px solid rgb(31, 31, 31); 
+  }
+
+
+
+    .pagination li:hover,
+    .pagination li.active {
+      background-color: rgba(65, 2, 2, 0.27);
+    }
+
+    .pagination li.disabled {
+      background-color: rgba(0, 0, 0, 0.23);
+      cursor: default;
+    }
+
+    .pagination li a{
+      text-decoration: none;
+      color: rgb(78,78,78);
+    }
+
+
+
+
+
+/*  IMAGE GALLERY  */
+
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+/*.slider {
+  position: relative;
+padding: 14px 0px;
+width: 70%;
+height: 80%;
+margin: auto;
+margin-top: 60px;
+box-shadow: 0px 0px 315px #1F1F1F;
+}*/
+.slide {
+  position: fixed;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60%;
+  left: 50%;
+  margin-left: -30%;
+  box-shadow: 0px 0px 315px rgba(41, 41, 41, 1);
+  background-color: black;
+}
+.arrows a{
+  position: absolute;
+  top: 45%;
+  /* background-color: red; */
+  /* height: 64px; */
+  width: 50px;
+}
+  .arrows a.prev{
+    left: 15%;
+  }
+  .arrows a.next{
+    right: 15%;
+  }
+.arrows img {
+}
+.arrows a {
+  text-decoration: none;
+}
+

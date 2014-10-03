@@ -8,8 +8,14 @@
  * Controller of the milkandleadApp
  */
 angular.module('milkandleadApp')
-  .controller('ExhibitionsCtrl', function ($scope, wpapi) {
+  .controller('ExhibitionsCtrl', function ($scope, wpapi, $document) {
     
+  	$scope.returnString = function(i){
+  		return 'ciao'+i
+  	}
+
+  	$scope.thumbPerPage = '12';
+  	
   	// SubNAV Control
 	$scope.subnav = ['front','pictures', 'info'];
     $scope.selection = $scope.subnav[0];
@@ -57,5 +63,67 @@ angular.module('milkandleadApp')
 		}
 	}
 
+
+	$scope.opaco = false;
+	$scope.closeBtn = false;
+
+	$scope.imageGallerySwitch =
+      [ { name: '', url: ''},
+        { name: 'imagegallery', url: '../../views/imagegallery.html'} ];
+    
+    $scope.imageGallery = $scope.imageGallerySwitch[0];
+
+    $scope.openImageGallery = function(album){
+    	
+
+    	$scope.imageGallery = $scope.imageGallerySwitch[1];
+    	$scope.galleryAlbum = toObject(album);
+
+    	$scope.startAlbum ()
+
+    	console.log($scope.galleryAlbum)
+    	//$document.body.style.overflowY = "hidden";
+    }
+
+    $scope.closeImageGallery = function(){
+    	$scope.imageGallery = $scope.imageGallerySwitch[0];
+    }
+
+    
+
+	$scope.startAlbum = function (){
+
+		$scope.currentIndex = 0; // Initially the index is at the first image
+
+
+		$scope.next = function() {
+		  $scope.currentIndex < $scope.galleryAlbum.length - 1 ? $scope.currentIndex++ : $scope.currentIndex = 0;
+		};
+		 
+		$scope.prev = function() {
+		  $scope.currentIndex > 0 ? $scope.currentIndex-- : $scope.currentIndex = $scope.galleryAlbum.length - 1;
+		};
+
+		$scope.$watch('currentIndex', function(newval, oldval) {
+		  $scope.galleryAlbum.forEach(function(image) {
+		    image.visible = false; // make every image invisible
+		    console.log(image);
+		  });
+		 
+		  $scope.galleryAlbum[$scope.currentIndex].visible = true; // make the current image visible
+		});	
+	}
+	
+
+	// Functions
+	function toObject(arr) {
+	  var ra = [];
+	  for (var i = 0; i < arr.length; ++i){
+	  	var rv = {};
+	    rv.source = arr[i];
+	  	ra.push(rv);
+	  }
+	  return ra;
+	}
 
   });

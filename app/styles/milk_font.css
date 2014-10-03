@@ -1,10 +1,23 @@
 @font-face {
+    font-family: 'mostraoneregularregular';
+    src: url('../fonts/mostraoneregular-webfont.eot');
+    src: url('../fonts/mostraoneregular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mostraoneregular-webfont.woff2') format('woff2'),
+         url('../fonts/mostraoneregular-webfont.woff') format('woff'),
+         url('../fonts/mostraoneregular-webfont.ttf') format('truetype'),
+         url('../fonts/mostraoneregular-webfont.svg#mostraoneregularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
   font-family: 'milk';
-  src: url('../fonts/milk.eot?17466549');
-  src: url('../fonts/milk.eot?17466549#iefix') format('embedded-opentype'),
-       url('../fonts/milk.woff?17466549') format('woff'),
-       url('../fonts/milk.ttf?17466549') format('truetype'),
-       url('../fonts/milk.svg?17466549#milk') format('svg');
+  src: url('../fonts/milk.eot?19000074');
+  src: url('../fonts/milk.eot?19000074#iefix') format('embedded-opentype'),
+       url('../fonts/milk.woff?19000074') format('woff'),
+       url('../fonts/milk.ttf?19000074') format('truetype'),
+       url('../fonts/milk.svg?19000074#milk') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +27,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'milk';
-    src: url('../font/milk.svg?17466549#milk') format('svg');
+    src: url('../font/milk.svg?19000074#milk') format('svg');
   }
 }
 */
@@ -53,3 +66,6 @@
 .icon-cancel:before { content: '\e800'; } /* '' */
 .icon-cancel-1:before { content: '\e801'; } /* '' */
 .icon-cancel-2:before { content: '\e802'; } /* '' */
+.icon-info:before { content: '\e803'; } /* '' */
+.icon-picture:before { content: '\e804'; } /* '' */
+.icon-th-thumb:before { content: '\e805'; } /* '' */
