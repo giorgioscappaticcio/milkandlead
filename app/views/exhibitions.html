@@ -3,19 +3,19 @@
   <!-- SUBNAV -->
   <div id="sub-nav">
     <div class="w-row">
-      <div class="w-col w-col-4"></div>
-      <div class="w-col w-col-4"></div>
       <div class="w-col w-col-4">
         <div class="w-form">
-          <input class="w-input input" id="Search-2" type="text" placeholder="Search Exhibitions" name="Search" data-name="Search">
+          <input class="w-input input" id="Search-2" ng-model="filterText.$" type="text" placeholder="Search Exhibitions" name="Search">
         </div>
       </div>
+      <div class="w-col w-col-4"></div>
+      <div class="w-col w-col-4"></div>
     </div>
   </div>
   <!-- END SUBNAV -->
 
   <!-- SINGLE EXHIBITION -->
-  <div class="exhib" ng-repeat="exhib in exhibObj track by $index" ng-mouseenter="opaco=true" ng-mouseleave="opaco=false">
+  <div class="exhib" ng-repeat="exhib in exhibObj | filter: filterText track by $index" ng-mouseenter="opaco=true" ng-mouseleave="opaco=false">
     
     <div class="close-btn" ng-click="selection = subnav[0]; opaco=true; closeBtn=false" ng-show="closeBtn">
       <i class="icon-cancel"></i>
@@ -34,13 +34,13 @@
     <div class="sub_main_content" ng-switch on="selection">
       
       <!-- Front -->
-      <div class="front_flyer mementomori" ng-style="set_flyerBg($index)" ng-switch-when="front" ng-class="{opaco: opaco}">
+      <div class="front_flyer mementomori" style="background-image:url({{exhib.custom_fields['wpcf-facebook-banner'][0]}})" ng-switch-when="front" ng-class="{opaco: opaco}">
       </div>
 
       <!-- Pictures flyer -->
       <div class="picture_flyer" ng-switch-when="pictures">
         <ul>
-          <li class="picture_thumb thumb_1" dir-paginate="thumb in exhib.custom_fields['wpcf-gallery-image'] | itemsPerPage: thumbPerPage: returnString($index)" pagination-id="{{returnString($index)}}" ng-click="openImageGallery(exhib.custom_fields['wpcf-gallery-image'])">
+          <li class="picture_thumb thumb_1" dir-paginate="(indice,thumb) in exhib.custom_fields['wpcf-gallery-image'] | itemsPerPage: thumbPerPage: returnString($index)" pagination-id="{{returnString($index)}}" ng-click="openImageGallery(exhib.custom_fields['wpcf-gallery-image'], indice)">
             <img ng-src="{{spiceThumb(thumb)}}" />
           </li>
         </ul>

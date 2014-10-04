@@ -1,27 +1,42 @@
-<div class="w-container main_container_wrap">
-      <div>
-        <div class="sub_main_content">
-          <div>
-            <div class="w-row">
-              <div class="w-col w-col-6">
-                <h4>Contact</h4>
-                <div>info@milkandlead.com</div>
-                <div>nekromarkt@milkandlead.com</div>
-                <div>press@milkandlead.com</div>
-                <h4>Team</h4>
-                <div>Art Director: Francesco Vertucci</div>
-                <div>Managing Director: Raffaella
-                  <br>Mandriota</div>
-                <div>Coordinator: Francesco Carvelli</div>
-                <div>Web: Giorgio Scappaticcio</div>
-              </div>
-              <div class="w-col w-col-6">
-                <h4>Address</h4>
-                <div>35-37 Fortescue Avenue E83QB</div>
-                <div class="w-widget w-widget-map" data-widget-latlng="51.540593,-0.057171" data-widget-style="roadmap" data-widget-zoom="12"></div>
-              </div>
-            </div>
-          </div>
+<div class="w-container main_container_wrap" ng-switch on="selection">
+
+  <!-- SUBNAV -->
+  <div id="sub-nav">
+    <div class="w-row">
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
+        <div class="sub_nav" ng-click="selection = subnav[0]" ng-class="{active: selection == subnav[0]}">
+          <div>CONTACT</div>
+        </div>
+      </div>
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
+        <div class="sub_nav" ng-click="selection = subnav[1]" ng-class="{active: selection == subnav[1]}">
+          <div>TEAM</div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- END SUBNAV -->
+
+  <div class="animate-switch ng-scope" ng-switch-when="contact">
+    <div class="sub_main_content">
+      <div class="w-row">
+        <div class="w-col w-col-4">
+          <div ng-bind-html="homeDetObj.custom_fields['wpcf-contact_description'][0]" class="contact"></div>
+        </div>
+        <div class="w-col w-col-8">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2481.447393868652!2d-0.05528115!3d51.54169475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ce42c812e9f%3A0xc01ab656c06234dd!2sLondon+E8+3QJ!5e0!3m2!1sen!2suk!4v1412461209780" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="animate-switch ng-scope" ng-switch-when="team">
+    <div class="sub_main_content">
+      <ul class="team">
+        <li ng-repeat="team in homeDetObj.custom_fields['wpcf-team-member']" ng-bind-html="team"></li>
+      </ul>
+    </div>
+  </div>
+
+     
+</div>

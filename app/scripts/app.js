@@ -20,22 +20,29 @@ angular
     'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider) {
+
+    // PROD
+    var templateFolder = './wp-content/themes/milkandlead/';
+
+    // DEV
+    var templateFolder = '';
+
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: templateFolder+'views/main.html',
         controller: 'MainCtrl'
       })
       .when('/about', {
-        templateUrl: 'views/about.html',
+        templateUrl: templateFolder+'views/about.html',
         controller: 'AboutCtrl'
       }).when('/exhibitions', {
-        templateUrl: 'views/exhibitions.html',
+        templateUrl: templateFolder+'views/exhibitions.html',
         controller: 'ExhibitionsCtrl'
       }).when('/shop', {
-        templateUrl: 'views/shop.html',
+        templateUrl: templateFolder+'views/shop.html',
         controller: 'ShopCtrl'
       }).when('/contact', {
-        templateUrl: 'views/contact.html',
+        templateUrl: templateFolder+'views/contact.html',
         controller: 'ContactCtrl'
       })
       .otherwise({

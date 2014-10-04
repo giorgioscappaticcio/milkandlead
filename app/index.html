@@ -10,11 +10,11 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" type="text/css" href="styles/normalize.css">
     <link rel="stylesheet" type="text/css" href="styles/webflow.css">
     <link rel="stylesheet" type="text/css" href="styles/milkandlead.webflow.css">
     <link rel="stylesheet" type="text/css" href="styles/milk_font.css">
-    <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -69,10 +69,10 @@
           </a>
           <div class="w-col w-col-7">
             <ul class="w-clearfix nav-list">
-              <li class="nav-link"><a ng-href="#/about" ng-click="changePanel('about')" >ABOUT</a></li>
-              <li class="nav-link"><a href="#/exhibitions" ng-click="changePanel('exhibition')">EXHIBITIONS</a></li>
-              <li class="nav-link"><a href="#/shop" ng-click="changePanel('shop')">SHOP</a></li>
-              <li class="nav-link"><a href="#/contact" ng-click="changePanel('contact')">CONTACT</a></li>
+              <li class="nav-link" ng-class="{active: navActive=='about'}"><a ng-href="#/about" ng-click="changePanel('about')">ABOUT</a></li>
+              <li class="nav-link" ng-class="{active: navActive=='exhibition'}"><a href="#/exhibitions" ng-click="changePanel('exhibition')">EXHIBITIONS</a></li>
+              <li class="nav-link" ng-class="{active: navActive=='shop'}"><a href="#/shop" ng-click="changePanel('shop')">SHOP</a></li>
+              <li class="nav-link" ng-class="{active: navActive=='contact'}"><a href="#/contact" ng-click="changePanel('contact')">CONTACT</a></li>
             </ul>
           </div>
           <div class="w-col w-col-2">

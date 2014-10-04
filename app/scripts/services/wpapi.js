@@ -10,10 +10,40 @@
 angular.module('milkandleadApp')
   .service('wpapi', function wpapi($http, $q) {
 
-  	this.getExhibitions = function(){
+  	// PROD
+  	var exhib_wpapi = 'http://www.milkandlead.com/?json=posts&post_type= exhibition&count=-1';
+  	var next_exhib_wpapi = 'http://www.milkandlead.com/?json=posts&post_type= next_exhibition&count=-1';
+    var homepage_api = 'http://www.milkandlead.com/?json=get_page&page_id=576';
+  	
+    // DEV
+  	var exhib_wpapi = '././data/exhibtion.json';
+  	var next_exhib_wpapi = '././data/next_exhb.json';
+    var homepage_api = '././data/homepage_api.json';
+
+  	this.getHomepageDetails = function(){
+      var deferred = $q.defer();
+
+    $http.get(homepage_api).success (function(data){
+        deferred.resolve(data);
+    });
+
+    return deferred.promise;
+    }
+
+    this.getExhibitions = function(){
   		var deferred = $q.defer();
 
-		$http.get('././data/exhibtion.json').success (function(data){
+		$http.get(exhib_wpapi).success (function(data){
+		    deferred.resolve(data);
+		});
+
+		return deferred.promise;
+  	}
+
+  	this.getnextExhibition = function(){
+  		var deferred = $q.defer();
+
+		$http.get(next_exhib_wpapi).success (function(data){
 		    deferred.resolve(data);
 		});
 

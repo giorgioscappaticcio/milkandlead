@@ -8,7 +8,7 @@
  * Controller of the milkandleadApp
  */
 angular.module('milkandleadApp')
-  .controller('MainCtrl', function ($scope, $location, wpapi) {
+  .controller('MainCtrl', function ($scope, $location, wpapi, $rootScope) {
     
 	// SubNAV Control
 	$scope.subnav = ['flyer','info', 'partecipating', 'submission'];
@@ -18,27 +18,31 @@ angular.module('milkandleadApp')
     	$scope.selection = $scope.subnav[0];
     }
 
-	// Call the service wpapi.js
-	var getExhibiotns = wpapi.getExhibitions();
+	
 
 	String.prototype.splice = function( idx, rem, s ) {
 	    return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
 	};
+
+	if (Object.getOwnPropertyNames($rootScope.nextExhibObj).length > 0) {
+    	return;
+    } else{
 	
-	getExhibiotns.then(function(greeting) {
-		console.log(greeting);
-		for (var i=0; i < greeting.posts.length; i++){
-	    	if (greeting.posts[i].id == '368'){
-	    		var filename = greeting.posts[i]["custom_fields"]["wpcf-facebook-banner"];
-	    		//console.log (filename.replace(/\.[^/.]+$/, ""));
-	    		//console.log (filename.splice(-4, 0, "-150x150"));
-			};
-	    };
-	}, function(reason) {
-	  alert('Failed: ' + reason);
-	}, function(update) {
-	  alert('Got notification: ' + update);
-	});
+		// Call the service wpapi.js
+		var getNextExhib = wpapi.getnextExhibition();
+
+		getNextExhib.then(function(greeting) {
+			
+			$rootScope.nextExhibObj = greeting.posts[0];
+			$scope.nextExhibObj = $rootScope.nextExhibObj
+			// console.log($scope.nextExhibObj);
+			
+		}, function(reason) {
+		  alert('Failed: ' + reason);
+		}, function(update) {
+		  alert('Got notification: ' + update);
+		});
+	};
 
     
     

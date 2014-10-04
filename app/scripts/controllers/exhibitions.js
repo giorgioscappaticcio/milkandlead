@@ -8,7 +8,7 @@
  * Controller of the milkandleadApp
  */
 angular.module('milkandleadApp')
-  .controller('ExhibitionsCtrl', function ($scope, wpapi, $document) {
+  .controller('ExhibitionsCtrl', function ($scope, wpapi, $document, $rootScope) {
     
   	$scope.returnString = function(i){
   		return 'ciao'+i
@@ -22,24 +22,16 @@ angular.module('milkandleadApp')
 
 
   	// Call the service wpapi.js
-	var getExhibiotns = wpapi.getExhibitions();
+	// var getExhibiotns = wpapi.getExhibitions();
 
-	getExhibiotns.then(function(greeting) {
-		console.log(greeting);
-		$scope.exhibObj = greeting.posts;
-	}, function(reason) {
-	  alert('Failed: ' + reason);
-	}, function(update) {
-	  alert('Got notification: ' + update);
-	});
-
-
-	$scope.set_flyerBg = function (i) {
-		var fbBanner = $scope.exhibObj[i].custom_fields["wpcf-facebook-banner"];
-		if (fbBanner != undefined){
-			return { 'background-image': 'url('+$scope.exhibObj[i].custom_fields["wpcf-facebook-banner"][0]+')' }
-		}
-	}
+	// getExhibiotns.then(function(greeting) {
+	// 	// console.log(greeting);
+		$rootScope.exhibObj = $scope.exhibObj;
+	// }, function(reason) {
+	//   alert('Failed: ' + reason);
+	// }, function(update) {
+	//   alert('Got notification: ' + update);
+	// });
 
 
 	String.prototype.splice = function( idx, rem, s ) {
@@ -67,21 +59,27 @@ angular.module('milkandleadApp')
 	$scope.opaco = false;
 	$scope.closeBtn = false;
 
+	// PROD
+	var imageGalleryTpl = './wp-content/themes/milkandlead/views/imagegallery.html' ;
+
+	// DEV
+	var imageGalleryTpl = '../../views/imagegallery.html' ;
+
 	$scope.imageGallerySwitch =
       [ { name: '', url: ''},
         { name: 'imagegallery', url: '../../views/imagegallery.html'} ];
     
     $scope.imageGallery = $scope.imageGallerySwitch[0];
 
-    $scope.openImageGallery = function(album){
+    $scope.openImageGallery = function(album, i){
     	
 
     	$scope.imageGallery = $scope.imageGallerySwitch[1];
     	$scope.galleryAlbum = toObject(album);
 
-    	$scope.startAlbum ()
+    	$scope.startAlbum (i)
 
-    	console.log($scope.galleryAlbum)
+    	// console.log($scope.galleryAlbum)
     	//$document.body.style.overflowY = "hidden";
     }
 
@@ -91,9 +89,9 @@ angular.module('milkandleadApp')
 
     
 
-	$scope.startAlbum = function (){
+	$scope.startAlbum = function (i){
 
-		$scope.currentIndex = 0; // Initially the index is at the first image
+		$scope.currentIndex = i; // Initially the index is at the first image
 
 
 		$scope.next = function() {

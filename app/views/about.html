@@ -20,13 +20,7 @@
   
   <!-- ABOUT -->
   <div class="animate-switch" ng-switch-when="about">
-    <div class="sub_main_content">
-      <p>MILKandLEAD is an independent art gallery organisation fouded on October the 22nd 2009 by Francesco Vertucci e Jasmine Balder.
-        <br>The gallery has been active into the underground movements for over 5 years, exhibiting artists whose sign –we feel- is leaving a unique impression in this moment in history.
-        <br>After organising different kind of events the gallery started as well with a new different projects MILKandLEAD “secret gallery” and דיאליזה- DIALYSIS (Body Art Performances) exhibiting between huge rich places and decadent squats were the
-        athmosphere reflects the mood of the event. The new gallery space is based in london fields , east London UK.
-        <br>In 2012 Raffaella Mandriota has joined our team as Managing director and carrying on projects with Francesco Vertucci as Creative director and art curator.</p>
-    </div>
+    <div class="sub_main_content" ng-bind-html="homeDetObj.content"></div>
   </div>
   <!-- END ABOUT -->
 
@@ -35,8 +29,7 @@
     <div class="sub_main_content">
       <div class="w-row">
         <div class="w-col w-col-6">
-          <p>Supporting our research for the discovery of new cultural and artistic forms but never allowing the mainstream to suffocate what differentiates itself from the logic of the masses; usually because it springs out of a simple and honest personal
-            belief.</p>
+          <div ng-bind-html="homeDetObj.custom_fields['wpcf-about_description'][0]"></div>
         </div>
         <div class="w-col w-col-6">
           <img src="images/donate-with-paypal.jpg" width="240" alt="5425729b4f9509a917fe654d_donate-with-paypal.jpg">

@@ -25,7 +25,7 @@
   <!-- FLYER -->
   <div class="information_flyer animate-switch" ng-switch-when="flyer">
     <div class="sub_main_content">
-      <img src="images/fb_banner_deliquium.png" id="sub-main-info" alt="542312cf8a632d4241caae8d_fb_banner_deliquium.png">
+      <img ng-src="{{ nextExhibObj.custom_fields['wpcf-facebook-banner'][0] }}" id="sub-main-info" alt="milk_and_lead_next_exhibition">
     </div>
   </div>
   <!-- END FLYER -->
@@ -34,12 +34,10 @@
   <div class="animate-switch" ng-switch-when="info">
     <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
     <div class="sub_main_content">
-      <h2>D E L I Q U I U M</h2>
-      <h3>DARK MOVEMENTS EXHIBITION</h3>
-      <p>Deliquium is a project that aims to combine music producers and a permanent collective art exhibition involving Dark movements such as Industrial/Dark Ambient/Noise/Electronic/. During the three days we aim to alternate on our stage artists
-        performing with diverse type of media, but united by a strong and nieche identity. Our main scope is to promote good quality music and give the possibility to some selected emerging new talents to exhibit their works aside estabilished artists.
-        In addition, Deliquium have to be considered a platform for visual artists that are exploring the same topics and are connected by the same influences. Therefore, with Deliquium we want our audience to be sank away by the cultural stream of
-        Darkness.</p>
+      <h2 ng-bind="nextExhibObj.title_plain">D E L I Q U I U M</h2>
+      <h3 ng-bind="nextExhibObj.custom_fields['wpcf-exhibition_intro'][0] "></h3>
+      <h3 ng-bind="nextExhibObj.custom_fields['wpcf-exhibition_date'][0] "></h3>
+      <p ng-bind-html="nextExhibObj.content"></p>
     </div>
   </div>
   <!-- END INFORMATION -->
@@ -48,50 +46,11 @@
   <div class="animate-switch" ng-switch-when="partecipating">
     <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
     <div class="sub_main_content">
-      <p>•DEUTSCH NEPAL
-        <br>http://deutschnepal.bandcamp.com/
-        <br>
-        <br>•IMMINENT
-        <br>http://deutschnepal.bandcamp.com/
-        <br>
-        <br>•PETRA FLURR
-        <br>https://soundcloud.com/petra-flurr
-        <br>
-        <br>•FROZEN AUTUMN
-        <br>http://www.frozenautumn.com/
-        <br>
-        <br>•TRANS4LEBEN
-        <br>https://www.youtube.com/watch?v=DuW958j-CeA
-        <br>
-        <br>•GUNTHER ISCARIOT
-        <br>https://soundcloud.com/rustfeeders
-        <br>
-        <br>•SKAT INJECTOR
-        <br>https://soundcloud.com/skat-injector
-        <br>
-        <br>•THE MURDER ACT
-        <br>https://soundcloud.com/the-murder-act
-        <br>
-        <br>•THE ANXIETY OF LOVE
-        <br>http://theanxietyoflove.bandcamp.com/
-        <br>
-        <br>•TREHA SEKTORI
-        <br>http://trehasektori.com/
-        <br>
-        <br>•EATEN BY CHILDREN
-        <br>http://www.milkandlead.com/?exhibition=eatenbychildren
-        <br>
-        <br>•JOSE MACABRA
-        <br>https://soundcloud.com/josemacabra
-        <br>
-        <br>•BROOD
-        <br>https://soundcloud.com/broodexperiments
-        <br>
-        <br>•LUKE JORDAN
-        <br>http://l-r-jordan.blogspot.co.uk/
-        <br>
-        <br>•EZV
-        <br>https://soundcloud.com/fzv</p>
+      <ul class="part-artist">
+        <li ng-repeat="artist in nextExhibObj.custom_fields['wpcf-partecipating-artist']">
+          <span ng-bind="artist"></span>
+        </li>
+      </ul>    
     </div>
   </div>
   <!-- END PARTECIPATING ARTIST -->
@@ -100,29 +59,24 @@
   <div class="animate-switch" ng-switch-when="submission">
     <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
     <div class="sub_main_content">
-      <p>
-        <br>&nbsp;&nbsp; MILKandLEAD is delighted to announce its first Art Contest, with places in our dark movements exhibition, DELIQUIUM, up for grabs (for details check MILKandLEAD website NEXT section). &nbsp; The stable exhibition will be the background
-        of a three day music festival from established Noise, Dark Ambient and Electronic artists. &nbsp; It will take place at the Electrowekz, Angel London from Thursday 19th to Saturday 21st of February. &nbsp; MILKandLEAD is offering the chance
-        for four visual artists to have their work on show. The selection process has two stages. &nbsp; Three winners will be selected by a technical jury including such judges as Francesco Vertucci (MILKandLEAD Director), Cliff Wallace (Special
-        Effect Creator) and Iris Schiefersten (Taxidermist). &nbsp; The winner of first prize will also have their travel expenses and accomodation covered during the exhibition. While second and third &nbsp; The first prize will be a 3 days travel
-        plus accommodation in London during the exhibition. While second and third prize will be the 3days tickets to the event &nbsp; Don't miss this chance to bring your work to the next level! &nbsp;
-        <br>TO APPLY:
-        <br>1.​Send your application on the website www.milkandlead.com/submissions by December 20th, 2014 at Midnight.
-        <br>2.​Participation fee: Early birds deadline November 15th, 2014 - 15 GBP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <br>From November 15th to December 20th 2014 - 25 GBP
-        <br>3.​Wait to hear back from MILKandLEAD organisers by the January 5th, 2015- if you haven’t been accepted you won’t receive an email.
-        <br>4.​ If accepted, you will receive a disclaimer form that you must send this back by January 15th, 2015 or your spot will be filled by another artist.
-        <br>Submit 3 digital images representative of the work you would like to submit. JPGs should be at least 300 x 300 pixel. Name each JPG with your first initial, last name and image number (example: JSmith1.jpg JSmith2.jpg, JSmith3.jpg).
-        <br>&nbsp;
-        <br>PLEASE NOTE:
-        <br>• All the decisions of curators/jurors are final • a display work must be representative of the digital images submitted as an entry. If the physical does not reflect the jpegs submitted the work may be rejected RULES &amp; REGULATIONS:
-        <br>
-        <br>1.​APPLICATIONS: Applications must be completed in full and submitted by December 25th 2014. Disclaimer form will be released upon acceptance of artwork and must be resubmitted to info@milkandlead.com by January 5th, 2015 or jurors will relinquish
-        spaces to next available applicant.
-        <br>2.​SALE OF WORK: On a signed agreement between MILKandLEAD and the artists their works will be sold on MILKandLEAD’s selling platform NekroMarkt.
-        <br>3.​RELEASE: MILKandLEAD Art Gallery or any participation sponsor will NOT be responsible for any injury, loss or damage that may occur to the artist or to the artist’s property from any cause whatsoever prior to, during or subsequent to the
-        period covered by the exhibition contract; and the artist signing this contract expressly releases all of the fore said from, and agrees to indemnify each of them against any and all claims from such loss, damage or injury from participation
-        in the event.</p>
+      <div class="w-row">
+        <div class="w-col w-col-6 w-col-small-6">
+          <form>
+            <input type="hidden" name="PAYMENTREQUEST_0_AMT" value="15.00"></input>
+            <input type="hidden" name="currencyCodeType" value="GBP"></input>
+            <input type="hidden" name="paymentType" value="Sale"></input>
+            <input type="hidden" name="PAYMENTREQUEST_0_SHIPPINGAMT" value="0"></input>
+            <input type="hidden" name="L_PAYMENTREQUEST_0_QTY0" value="1"></input>
+            <button>Submit</button>
+        </form>
+        </div>
+        <div class="w-col w-col-5 w-col-small-5">
+          <button ng-click="apply=!apply">How to apply</button>
+        </div>
+      </div>
+      <div style="margin-top:20px; border: 1px solid rgb(44, 44, 44); padding:10px" ng-show="apply">
+        <p ng-bind="nextExhibObj.custom_fields['wpcf-submission'][0] "></p>
+      </div>
     </div>
   </div>
   <!-- END ARTIST SUBMISSION -->

@@ -1,4 +1,11 @@
 /*  FONT */
+h1, h2, h3 {
+  font-family: mostraoneregularregular;
+}
+
+h1 {
+  font-size: 24px;
+}
   /*  NAVIGATION  */
   .nav-link a {
     font-family: mostraoneregularregular;
@@ -7,7 +14,7 @@
 
     .nav-link:hover,
     .nav-link.active {
-      background-color: rgba(0,0,0,0.7);
+      background-color: rgba(0,0,0,0.37);
     }
 
 
@@ -17,7 +24,14 @@
 
 
 /* This changes must be replaced in WEBFLOW */
+.input {
+  border: 1px solid rgb(44, 44, 44);
+  font-family: mostraoneregularregular;
+}
 
+img {
+  height: auto;
+}
 
 
 
@@ -39,20 +53,22 @@
   .picture_thumb {
     width: 13%;
     cursor: pointer;
-    border: 1px solid rgb(92, 92, 92);
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0px 4px 10px rgb(0, 0, 0);
   }
 
     .picture_thumb:hover {
       opacity: 0.7;
+      box-shadow: 0;
     }
 
 
 /* NAVIGATION */
 
 .nav-link {
-  padding: 6px;
+  padding: 26px 30px;
   cursor: pointer;
-  margin-top: 20px !important;
+  margin: 0px !important;
 }
 
   .nav-list a{
@@ -87,6 +103,8 @@
   margin-bottom: 0;
   cursor: pointer;
   background-color: rgba(0,0,0,0.17);
+  font-family: mostraoneregularregular;
+  font-size: 16px;
 }
 
   .sub_nav:hover,
@@ -118,6 +136,7 @@
       cursor: pointer;
       margin-right: 10px;
       background-color: rgba(255,255,255,0.7);
+      font-family: mostraoneregularregular;
     }
 
       .exhib-nav-btn:hover {
@@ -176,6 +195,57 @@
     }
 
 
+
+
+
+/*  SUB MAIN CONTENT  */
+.sub_main_content {
+  border: 1px solid rgb(44, 44, 44);
+}
+
+.sub_main_content ul.part-artist li,
+.sub_main_content p,
+.team li {
+  white-space: pre-wrap;
+}
+
+
+  .sub_main_content ul.part-artist li,
+  .team li {
+    display: inline-block;
+    width: 100%;
+    padding: 7px;
+    background-color: rgba(0, 0, 0, 0.28);
+    margin-top: 10px;
+    font-family: mostraoneregularregular;
+    font-size: 16px;
+  }
+
+    .sub_main_content button {
+      width: 100%;
+      padding: 35px;
+      text-transform: uppercase;
+      background-color: rgba(0, 0, 0, 0.73);
+      border: 1px solid rgb(44, 44, 44);
+      color: white;
+      font-family: mostraoneregularregular;
+      font-size: 24px;
+    }
+
+
+
+/*  CONTACT  */
+.contact ul {
+  list-style: none;
+}
+
+  .contact ul li {
+    padding: 4px;
+  }
+
+.contact h3 {
+  font-size: 16px;
+}
 
 
 
