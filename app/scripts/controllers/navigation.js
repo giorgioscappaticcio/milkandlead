@@ -41,18 +41,7 @@ angular.module('milkandleadApp')
     	break;
     }
 
-    // GET NEXT EXHIBITION DETAILS AND STORE IN THE ROOT
-
-    var getExhibitions = wpapi.getExhibitions();
-
-    getExhibitions.then(function(greeting) {
-        // console.log(greeting);
-        $rootScope.exhibObj = greeting.posts;
-    }, function(reason) {
-      alert('Failed: ' + reason);
-    }, function(update) {
-      alert('Got notification: ' + update);
-    });
+    
 
     
 

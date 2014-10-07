@@ -40,11 +40,11 @@
       <!-- Pictures flyer -->
       <div class="picture_flyer" ng-switch-when="pictures">
         <ul>
-          <li class="picture_thumb thumb_1" dir-paginate="(indice,thumb) in exhib.custom_fields['wpcf-gallery-image'] | itemsPerPage: thumbPerPage: returnString($index)" pagination-id="{{returnString($index)}}" ng-click="openImageGallery(exhib.custom_fields['wpcf-gallery-image'], indice)">
+          <li class="picture_thumb thumb_1" dir-paginate="(indice,thumb) in exhib.custom_fields['wpcf-gallery-image'] | itemsPerPage: thumbPerPage: returnString($index)" pagination-id="{{returnString($index)}}" ng-click="openImageGallery(exhib.custom_fields['wpcf-gallery-image'], exhib.custom_fields['wpcf-gallery-image'].indexOf(thumb))">
             <img ng-src="{{spiceThumb(thumb)}}" />
           </li>
         </ul>
-        <dir-pagination-controls pagination-id="{{returnString($index)}}" template-url="./views/thumb_pagination.html"></dir-pagination-controls>
+        <dir-pagination-controls pagination-id="{{returnString($index)}}" template-url="../wp-content/themes/milkandlead/views/thumb_pagination.html"></dir-pagination-controls>
       </div>
 
       <!-- Info -->
