@@ -18,7 +18,10 @@ h1 {
     }
 
 
-
+.nospace {
+  margin:0;
+  padding: 0 
+}
 
 
 
@@ -92,6 +95,10 @@ img {
 
 .close-btn:hover {
   color: rgb(85, 3, 3);
+}
+
+.close-btn img {
+  width: 80px;
 }
 
 
@@ -201,6 +208,10 @@ img {
 /*  SUB MAIN CONTENT  */
 .sub_main_content {
   border: 1px solid rgb(44, 44, 44);
+}
+
+.sub_main_content p {
+  text-align: left;
 }
 
 .sub_main_content ul.part-artist li,

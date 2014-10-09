@@ -4,18 +4,19 @@
   <div id="sub-nav">
     <div class="w-row">
       <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
+        <div class="sub_nav" ng-click="selection = subnav[2]" ng-class="{active: selection == subnav[2]}">
+          <div>PARTECIPATING ARTISTS</div>
+        </div>
+      </div>
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col"></div>
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col" ng-hide="true">
         <div class="sub_nav" ng-click="selection = subnav[1]" ng-class="{active: selection == subnav[1]}">
           <div>INFORMATION</div>
         </div>
       </div>
       <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
-        <div class="sub_nav" ng-click="selection = subnav[2]" ng-class="{active: selection == subnav[2]}">
-          <div>PARTECIPATING ARTISTS</div>
-        </div>
-      </div>
-      <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
         <div class="sub_nav" ng-click="selection = subnav[3]" ng-class="{active: selection == subnav[3]}">
-          <div>ARTISTS SUBMISSION</div>
+          <div>SUBMIT YOUR ARTWORK</div>
         </div>
       </div>
     </div>
@@ -23,7 +24,7 @@
   <!-- END SUBNAV -->
 
   <!-- FLYER -->
-  <div class="information_flyer animate-switch" ng-switch-when="flyer">
+  <div class="information_flyer animate-switch" ng-switch-when="flyer" ng-hide ="true">
     <div class="sub_main_content">
       <img ng-src="{{ nextExhibObj.custom_fields['wpcf-facebook-banner'][0] }}" id="sub-main-info" alt="milk_and_lead_next_exhibition">
     </div>
@@ -32,7 +33,7 @@
 
   <!-- INFORMATION -->
   <div class="animate-switch" ng-switch-when="info">
-    <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
+    <!-- <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div> -->
     <div class="sub_main_content">
       <h2 ng-bind="nextExhibObj.title_plain">D E L I Q U I U M</h2>
       <h3 ng-bind="nextExhibObj.custom_fields['wpcf-exhibition_intro'][0] "></h3>
@@ -42,9 +43,11 @@
   </div>
   <!-- END INFORMATION -->
 
+  
+
   <!-- PARTECIPATING ARTIST -->
   <div class="animate-switch" ng-switch-when="partecipating">
-    <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
+    <div class="close-btn" ng-click="closebtn()"><img src="../images/back_button_web.png" /></div>
     <div class="sub_main_content">
       <ul class="part-artist">
         <li ng-repeat="artist in nextExhibObj.custom_fields['wpcf-partecipating-artist']">
@@ -57,28 +60,57 @@
 
   <!-- ARTIST SUBMISSION -->
   <div class="animate-switch" ng-switch-when="submission">
-    <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
+    <div class="close-btn" ng-click="closebtn()"><img src="../images/back_button_web.png" /></div>
     <div class="sub_main_content">
       <div class="w-row">
-        <div class="w-col w-col-6 w-col-small-6">
-          <form>
+        <div class="w-col w-col-12 w-col-small-12" style="padding-bottom:20px">
+          <h2 class="nospace">Guideline</h2>
+        </div>
+      </div>
+      <div class="w-row">
+        <div class="w-col w-col-12 w-col-small-12">
+          <p ng-bind="nextExhibObj.custom_fields['wpcf-submission'][0] "></p>
+        </div>
+      </div>
+      <div class="w-row">
+        <div class="w-col w-col-12 w-col-small-12">
+          <form action="http://www.milkandlead.com/wp-content/themes/milkandlead/paypal/paypal_ec_redirect.php" method="POST">
+            <input type="hidden" name="PAYMENTREQUEST_0_ITEMAMT" value="15.00"></input>
             <input type="hidden" name="PAYMENTREQUEST_0_AMT" value="15.00"></input>
             <input type="hidden" name="currencyCodeType" value="GBP"></input>
             <input type="hidden" name="paymentType" value="Sale"></input>
             <input type="hidden" name="PAYMENTREQUEST_0_SHIPPINGAMT" value="0"></input>
             <input type="hidden" name="L_PAYMENTREQUEST_0_QTY0" value="1"></input>
+            <input type="hidden" name="LOGOIMG" value="http://www.milkandlead.com/wp-content/themes/milkandlead/images/timbro.png"></input>
             <button>Submit</button>
-        </form>
+          </form>
         </div>
-        <div class="w-col w-col-5 w-col-small-5">
-          <button ng-click="apply=!apply">How to apply</button>
-        </div>
-      </div>
-      <div style="margin-top:20px; border: 1px solid rgb(44, 44, 44); padding:10px" ng-show="apply">
-        <p ng-bind="nextExhibObj.custom_fields['wpcf-submission'][0] "></p>
       </div>
     </div>
   </div>
   <!-- END ARTIST SUBMISSION -->
+
+  <!-- SUBNAV -->
+  <div id="sub-nav">
+    <div class="w-row">
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
+        <div class="sub_nav" ng-click="selection = subnav[2]" ng-class="{active: selection == subnav[2]}">
+          <div>PARTECIPATING ARTISTS</div>
+        </div>
+      </div>
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col" ng-hide="true">
+        <div class="sub_nav" ng-click="selection = subnav[1]" ng-class="{active: selection == subnav[1]}">
+          <div>INFORMATION</div>
+        </div>
+      </div>
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col"></div>
+      <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
+        <div class="sub_nav" ng-click="selection = subnav[3]" ng-class="{active: selection == subnav[3]}">
+          <div>SUBMIT YOUR ARTWORK</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END SUBNAV -->
 
 </div>

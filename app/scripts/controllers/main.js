@@ -12,10 +12,10 @@ angular.module('milkandleadApp')
     
 	// SubNAV Control
 	$scope.subnav = ['flyer','info', 'partecipating', 'submission'];
-    $scope.selection = $scope.subnav[0];
+    $scope.selection = $scope.subnav[1];
 
     $scope.closebtn = function(){
-    	$scope.selection = $scope.subnav[0];
+    	$scope.selection = $scope.subnav[1];
     }
 
 	
