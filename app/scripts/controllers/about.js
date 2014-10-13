@@ -9,7 +9,9 @@
  */
 angular.module('milkandleadApp')
   .controller('AboutCtrl', function ($scope, $rootScope, wpapi) {
-    
+   
+    $rootScope.isExhibition = false;
+
   	$scope.subnav = ['about','support'];
     $scope.selection = $scope.subnav[0];
 
@@ -22,10 +24,18 @@ angular.module('milkandleadApp')
     if (Object.getOwnPropertyNames($rootScope.homeDetObj).length > 0) {
     	return;
     } else{
+
+      $rootScope.loading = true;
+      $rootScope.bodyStyle = {overflow: "hidden"};
+
     	getHomepageDetails.then(function(greeting) {
-	         // console.log(greeting);
-	        $rootScope.homeDetObj = greeting.page;
-	        $scope.homeDetObj = $rootScope.homeDetObj;
+
+        $rootScope.homeDetObj = greeting.page;
+        $scope.homeDetObj = $rootScope.homeDetObj;
+
+        $rootScope.loading = false;
+        $rootScope.bodyStyle = {overflow: "visible"};
+
 	    }, function(reason) {
 	      alert('Failed: ' + reason);
 	    }, function(update) {

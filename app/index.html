@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body id="ng-app" ng-app="milkandleadApp">
+  <body id="ng-app" ng-app="milkandleadApp" ng-style="bodyStyle">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -78,12 +78,12 @@
           <div class="w-col w-col-2">
             <div class="social_icons">
               <a href="https://www.facebook.com/MilkandLeadArtGalleryLondon?fref=ts" target="_blank">
-                <img src="images/Grunge-Facebook-Stamp-psd.png" alt="5422fbf68a632d4241caabe1_Grunge-Facebook-Stamp-psd.png">
+                <img src="http://216.120.239.144/bondz/wp-content/uploads/2013/07/097668-black-ink-grunge-stamp-textures-icon-social-media-logos-facebook-logo-square.png">
               </a>
             </div>
             <div class="social_icons twitter_icon">
               <a href="https://twitter.com/MILKandLEAD" target="_blank">
-                <img src="images/twitter_web.png" alt="542303788a632d4241caaceb_twitter_web.png">
+                <img src="http://uploads.webflow.com/5305c804570cfdeb39000030/530733f7ffe7f910440005d4_097740-black-ink-grunge-stamp-textures-icon-social-media-logos-twitter-logo-square.png">
               </a>
             </div>
           </div>
@@ -97,6 +97,11 @@
     </div>
     <!-- END MAIN -->
 
+    <!-- LOADER -->
+    <div class="loader_wrap" ng-show="loading">
+      <div class="loader"></div>
+    </div>
+    <!-- END LOADER -->
     
 
 

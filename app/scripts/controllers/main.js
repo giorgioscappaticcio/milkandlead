@@ -10,6 +10,8 @@
 angular.module('milkandleadApp')
   .controller('MainCtrl', function ($scope, $location, wpapi, $rootScope) {
     
+	$rootScope.isExhibition = false;
+
 	// SubNAV Control
 	$scope.subnav = ['flyer','info', 'partecipating', 'submission'];
     $scope.selection = $scope.subnav[1];
@@ -18,7 +20,9 @@ angular.module('milkandleadApp')
     	$scope.selection = $scope.subnav[1];
     }
 
-	
+	$scope.loading = function(){
+		$rootScope.loading = true;
+	}
 
 	String.prototype.splice = function( idx, rem, s ) {
 	    return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
@@ -27,7 +31,10 @@ angular.module('milkandleadApp')
 	if (Object.getOwnPropertyNames($rootScope.nextExhibObj).length > 0) {
     	return;
     } else{
-	
+		
+		$rootScope.loading = true;
+		$rootScope.bodyStyle = {overflow: "hidden"};
+		
 		// Call the service wpapi.js
 		var getNextExhib = wpapi.getnextExhibition();
 
@@ -35,7 +42,9 @@ angular.module('milkandleadApp')
 			
 			$rootScope.nextExhibObj = greeting.posts[0];
 			$scope.nextExhibObj = $rootScope.nextExhibObj
-			// console.log($scope.nextExhibObj);
+			
+			$rootScope.loading = false;
+			$rootScope.bodyStyle = {overflow: "visible"};
 			
 		}, function(reason) {
 		  alert('Failed: ' + reason);

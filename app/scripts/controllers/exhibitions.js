@@ -10,6 +10,14 @@
 angular.module('milkandleadApp')
   .controller('ExhibitionsCtrl', function ($scope, wpapi, $document, $rootScope) {
     
+  	$rootScope.isExhibition = true;
+
+  	// PROD
+	var imageGalleryTpl = '../wp-content/themes/milkandlead/views/imagegallery.html' ;
+
+	// DEV
+	var imageGalleryTpl = '../../views/imagegallery.html' ;
+
   	$scope.returnString = function(i){
   		return 'ciao'+i
   	}
@@ -22,97 +30,103 @@ angular.module('milkandleadApp')
 
 
     // Infinite Scroll
-    $scope.pageToDisplay = 1;
+    
 
     $scope.startInf = false;
 
+    // Infinite scroll
     $document.on('scroll', function() {
-    	var excuted = false;
     	
-    	if ($document.scrollTop() > getDocHeight() - 800 && $scope.startInf){
+    	if ($rootScope.isExhibition){
 
-    		$scope.startInf = false; 
-    		if ($scope.pageToDisplay < $rootScope.pages ){
-    			
-    			$scope.pageToDisplay += 1;
-    		} else {
-    			return;
-    		}
+	    	var excuted = false;
+	    	
+	    	if ($document.scrollTop() > getDocHeight() - 800 && $scope.startInf){
 
-    		
-    		console.log('this is the bottom', getDocHeight(), $document.scrollTop());
-  		
-	  		var getExhibitions = wpapi.getExhibitions(3,$scope.pageToDisplay);
+	    		$scope.startInf = false; 
+	    		if ($scope.pageToDisplay < $rootScope.pages ){
+	    			
+	    			$scope.pageToDisplay += 1;
+	    		} else {
+	    			return;
+	    		}
 
-	    	getExhibitions.then(function(greeting) {
-	         	console.log(greeting);
-	         	$scope.startInf = true;
-	        	for (var j = 0; j < greeting.posts.length; j++){
-	        		$rootScope.exhibObj.push(greeting.posts[j]);
-	        	}
-	        	
-		    }, function(reason) {
-		      	alert('Failed: ' + reason);
-		    }, function(update) {
-		      	alert('Got notification: ' + update);
-		    });
-    	}
-      
+	    		
+	    		//console.log('this is the bottom', getDocHeight(), $document.scrollTop());
+
+	    		$rootScope.bodyStyle = {overflow: "hidden"};
+	    		$rootScope.loading = true;
+	  		
+		  		var getExhibitions = wpapi.getExhibitions(3,$scope.pageToDisplay);
+		  		
+
+		    	getExhibitions.then(function(greeting) {
+		         	console.log(greeting);
+		         	$scope.startInf = true;
+		         	$rootScope.loading = false;
+		         	$rootScope.bodyStyle = {overflow: "visible"};
+		        	for (var j = 0; j < greeting.posts.length; j++){
+		        		$rootScope.exhibObj.push(greeting.posts[j]);
+		        	}
+		        	
+			    }, function(reason) {
+			      	alert('Failed: ' + reason);
+			    }, function(update) {
+			      	alert('Got notification: ' + update);
+			    });
+	    	}
+      	}
     });
+    
+    
 
     
 	// GET NEXT EXHIBITION DETAILS AND STORE IN THE ROOT
 
-    var getExhibitions = wpapi.getExhibitions(3,$scope.pageToDisplay);
+    if (Object.getOwnPropertyNames($rootScope.exhibObj).length > 0) {
+    	return;
+    } else{
 
-    getExhibitions.then(function(greeting) {
-         console.log(greeting);
-        $rootScope.exhibObj = greeting.posts;
-        $rootScope.pages = greeting.pages;
-        $scope.startInf = true;
-        //$rootScope
-    }, function(reason) {
-      alert('Failed: ' + reason);
-    }, function(update) {
-      alert('Got notification: ' + update);
-    });
+    	$scope.pageToDisplay = 1;
+
+	    var getExhibitions = wpapi.getExhibitions(3,$scope.pageToDisplay);
+
+	    $rootScope.loading = true;
+		$rootScope.bodyStyle = {overflow: "hidden"};
+		
+
+	    getExhibitions.then(function(greeting) {
+	         console.log(greeting);
+	        $rootScope.exhibObj = greeting.posts;
+	        $rootScope.pages = greeting.pages;
+	        $scope.startInf = true;
+	        $rootScope.loading = false;
+		    $rootScope.bodyStyle = {overflow: "visible"};
+		    $rootScope.exhibObj = $scope.exhibObj;
+	        //$rootScope
+	    }, function(reason) {
+	      alert('Failed: ' + reason);
+	    }, function(update) {
+	      alert('Got notification: ' + update);
+	    });
+		
+	}
+
 	
-	$rootScope.exhibObj = $scope.exhibObj;
 
 	String.prototype.splice = function( idx, rem, s ) {
 	    return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
 	};
 
-	$scope.spiceThumb = function(thumb){
-		switch (thumb.split('.').pop()){
-			case 'jpeg' :
-				return thumb.splice(-5, 0, "-150x150");
-			break;
-			case 'jpg' :
-				return thumb.splice(-4, 0, "-150x150");
-			break;
-			case 'png' :
-				return thumb.splice(-4, 0, "-150x150");
-			break;
-			case 'gif' :
-				return thumb.splice(-4, 0, "-150x150");
-			break;
-		}
-	}
-
 
 	$scope.opaco = false;
 	$scope.closeBtn = false;
 
-	// PROD
-	var imageGalleryTpl = './wp-content/themes/milkandlead/views/imagegallery.html' ;
-
-	// DEV
-	var imageGalleryTpl = '../../views/imagegallery.html' ;
+	
 
 	$scope.imageGallerySwitch =
       [ { name: '', url: ''},
-        { name: 'imagegallery', url: '../../views/imagegallery.html'} ];
+        { name: 'imagegallery', url: imageGalleryTpl} ];
     
     $scope.imageGallery = $scope.imageGallerySwitch[0];
 

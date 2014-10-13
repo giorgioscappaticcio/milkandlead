@@ -48,4 +48,21 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  }).filter('sliceThumb', function() {
+    return function(input) {
+      switch (input.split('.').pop()){
+        case 'jpeg' :
+          return input.splice(-5, 0, "-150x150");
+        break;
+        case 'jpg' :
+          return input.splice(-4, 0, "-150x150");
+        break;
+        case 'png' :
+          return input.splice(-4, 0, "-150x150");
+        break;
+        case 'gif' :
+          return input.splice(-4, 0, "-150x150");
+        break;
+      }
+    };
   });

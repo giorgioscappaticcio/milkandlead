@@ -12,6 +12,7 @@ angular.module('milkandleadApp')
     
     $rootScope.homeDetObj = {};
     $rootScope.nextExhibObj = {};
+    $rootScope.exhibObj = {};
 
     $scope.changePanel = function(section){
     	$scope.navActive = section;

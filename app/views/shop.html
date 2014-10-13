@@ -4,74 +4,28 @@
   <div id="sub-nav">
     <div class="w-row">
       <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
-        <div class="sub_nav" ng-click="go('http://nekromarkt.com')" ng-class="{active: selection == subnav[1]}">
-          <div>GO TO THE SHOP</div>
+        <div class="sub_nav">
+          <div> </div>
         </div>
       </div>
       <div class="w-col w-col-4 w-col-small-4 sub-nav_col">
-        <div class="sub_nav" ng-click="selection = subnav[1]" ng-class="{active: selection == subnav[2]}">
-          <div>INFORMATION</div>
+        <div class="sub_nav">
+          <div> </div>
         </div>
       </div>
     </div>
   </div>
   <!-- END SUBNAV -->
 
-  <!-- FLYER -->
-  <div class="information_flyer animate-switch" ng-switch-when="flyer">
-    <div class="sub_main_content">
-      <img ng-src="{{ homeDetObj.custom_fields['wpcf-shop-banner'][0] }}" id="sub-main-info" alt="milk_and_lead_nekro_markt">
-    </div>
-  </div>
-  <!-- END FLYER -->
-
   <!-- INFORMATION -->
-  <div class="animate-switch" ng-switch-when="info">
-    <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
+  <div class="animate-switch">
     <div class="sub_main_content">
       <h2>NEKROMARKT</h2>
       <p ng-bind-html="homeDetObj.custom_fields['wpcf-shop-description'][0]"></p>
+      <a href="http://nekromarkt.com">
+        <img ng-src="{{ homeDetObj.custom_fields['wpcf-shop-banner'][0] }}" id="sub-main-info" alt="milk_and_lead_nekro_markt">
+      </a>
     </div>
   </div>
   <!-- END INFORMATION -->
-
-  <!-- PARTECIPATING ARTIST -->
-  <div class="animate-switch" ng-switch-when="partecipating">
-    <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
-    <div class="sub_main_content">
-      <ul class="part-artist">
-        <li ng-repeat="artist in nextExhibObj.custom_fields['wpcf-partecipating-artist']">
-          <span ng-bind="artist"></span>
-        </li>
-      </ul>    
-    </div>
-  </div>
-  <!-- END PARTECIPATING ARTIST -->
-
-  <!-- ARTIST SUBMISSION -->
-  <div class="animate-switch" ng-switch-when="submission">
-    <div class="close-btn" ng-click="closebtn()"><i class="icon-cancel"></i></div>
-    <div class="sub_main_content">
-      <div class="w-row">
-        <div class="w-col w-col-6 w-col-small-6">
-          <form>
-            <input type="hidden" name="PAYMENTREQUEST_0_AMT" value="15.00"></input>
-            <input type="hidden" name="currencyCodeType" value="GBP"></input>
-            <input type="hidden" name="paymentType" value="Sale"></input>
-            <input type="hidden" name="PAYMENTREQUEST_0_SHIPPINGAMT" value="0"></input>
-            <input type="hidden" name="L_PAYMENTREQUEST_0_QTY0" value="1"></input>
-            <button>Submit</button>
-        </form>
-        </div>
-        <div class="w-col w-col-5 w-col-small-5">
-          <button ng-click="apply=!apply">How to apply</button>
-        </div>
-      </div>
-      <div style="margin-top:20px; border: 1px solid rgb(44, 44, 44); padding:10px" ng-show="apply">
-        <p ng-bind="nextExhibObj.custom_fields['wpcf-submission'][0] "></p>
-      </div>
-    </div>
-  </div>
-  <!-- END ARTIST SUBMISSION -->
-
 </div>

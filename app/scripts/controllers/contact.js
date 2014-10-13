@@ -10,8 +10,10 @@
 angular.module('milkandleadApp')
   .controller('ContactCtrl', function ($scope, wpapi, $rootScope) {
     
+    $rootScope.isExhibition = false;
+
   	// SubNAV Control
-	$scope.subnav = ['contact','team'];
+	   $scope.subnav = ['contact','team'];
     $scope.selection = $scope.subnav[0];
 
     $scope.closebtn = function(){
@@ -25,10 +27,18 @@ angular.module('milkandleadApp')
 	if (Object.getOwnPropertyNames($rootScope.homeDetObj).length > 0) {
     	return;
     } else{
+
+      $rootScope.loading = true;
+      $rootScope.bodyStyle = {overflow: "hidden"};
+
     	getHomepageDetails.then(function(greeting) {
-	         // console.log(greeting);
-	        $rootScope.homeDetObj = greeting.page;
-	        $scope.homeDetObj = $rootScope.homeDetObj;
+
+        $rootScope.homeDetObj = greeting.page;
+        $scope.homeDetObj = $rootScope.homeDetObj;
+
+        $rootScope.loading = false;
+        $rootScope.bodyStyle = {overflow: "visible"};
+
 	    }, function(reason) {
 	      alert('Failed: ' + reason);
 	    }, function(update) {
