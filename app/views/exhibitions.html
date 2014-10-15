@@ -47,13 +47,18 @@
 
         <!-- Pictures flyer -->
         <div class="picture_flyer">
-          <ul>
+          <!-- <ul>
             <li class="picture_thumb thumb_1" dir-paginate="(indice,thumb) in exhib.custom_fields['wpcf-gallery-image'] | itemsPerPage: thumbPerPage: returnString($index)" pagination-id="{{returnString($index)}}" ng-click="openImageGallery(exhib.custom_fields['wpcf-gallery-image'], exhib.custom_fields['wpcf-gallery-image'].indexOf(thumb))">
               <img ng-src="{{thumb | sliceThumb}}" />
             </li>
           </ul>
-          <dir-pagination-controls pagination-id="{{returnString($index)}}" template-url="thumb_pagination.html"></dir-pagination-controls>
-        </div>
+          <dir-pagination-controls pagination-id="{{returnString($index)}}" template-url="../views/thumb_pagination.html"></dir-pagination-controls>
+        </div> -->
+        <ul>
+          <li class="picture_thumb thumb_1" ng-repeat="(indice,thumb) in exhib.custom_fields['wpcf-gallery-image']" ng-click="$parent.openImageGallery(exhib.custom_fields['wpcf-gallery-image'], exhib.custom_fields['wpcf-gallery-image'].indexOf(thumb))">
+            <img ng-src="{{thumb | sliceThumb}}" />
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -62,5 +67,5 @@
 
 <!-- Image Gallery -->
 <div class="slide-animate-container">
-  <div class="slide-animate" ng-include="imageGallery.url"></div>
+  <div class="slide-animate" ng-include="$parent.imageGallery.url"></div>
 </div>

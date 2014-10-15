@@ -81,6 +81,11 @@ h2 {
 
 
 /*  SUB MAIN CONTENT  */
+
+.picture_flyer {
+  height: auto;
+  padding-bottom: 20px;
+}
 .picture_flyer ul {
   padding: 22px 0 0;
   margin-left: -20px;
@@ -203,6 +208,9 @@ h2 {
       }
 
     /*  Back Flyer  */
+    .back_flyer {
+      padding-top: 40px;
+    }
     .back_flyer p {
       white-space: normal !important;
     }

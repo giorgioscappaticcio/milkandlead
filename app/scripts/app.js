@@ -25,7 +25,7 @@ angular
     var templateFolder = './wp-content/themes/milkandlead/';
 
     // DEV
-    var templateFolder = '';
+    // var templateFolder = '';
 
     $routeProvider
       .when('/', {

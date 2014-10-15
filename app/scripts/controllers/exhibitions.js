@@ -16,7 +16,7 @@ angular.module('milkandleadApp')
 	var imageGalleryTpl = '../wp-content/themes/milkandlead/views/imagegallery.html' ;
 
 	// DEV
-	var imageGalleryTpl = '../../views/imagegallery.html' ;
+	// var imageGalleryTpl = '../../views/imagegallery.html' ;
 
   	$scope.returnString = function(i){
   		return 'ciao'+i
@@ -124,52 +124,52 @@ angular.module('milkandleadApp')
 
 	
 
-	$scope.imageGallerySwitch =
+	$rootScope.imageGallerySwitch =
       [ { name: '', url: ''},
         { name: 'imagegallery', url: imageGalleryTpl} ];
     
-    $scope.imageGallery = $scope.imageGallerySwitch[0];
+    $rootScope.imageGallery = $rootScope.imageGallerySwitch[0];
 
-    $scope.openImageGallery = function(album, i){
+    $rootScope.openImageGallery = function(album, i){
     	
 
-    	$scope.imageGallery = $scope.imageGallerySwitch[1];
-    	$scope.galleryAlbum = toObject(album);
+    	$rootScope.imageGallery = $rootScope.imageGallerySwitch[1];
+    	$rootScope.galleryAlbum = toObject(album);
 
-    	$scope.startAlbum (i)
+    	$rootScope.startAlbum (i)
 
     	// console.log($scope.galleryAlbum)
     	//$document.body.style.overflowY = "hidden";
     }
 
-    $scope.closeImageGallery = function(){
-    	$scope.imageGallery = $scope.imageGallerySwitch[0];
+    $rootScope.closeImageGallery = function(){
+    	$rootScope.imageGallery = $rootScope.imageGallerySwitch[0];
     }
 
     
 
-	$scope.startAlbum = function (i){
+	$rootScope.startAlbum = function (i){
 
 		// console.log(i)
 
-		$scope.currentIndex = i; // Initially the index is at the first image
+		$rootScope.currentIndex = i; // Initially the index is at the first image
 
 
-		$scope.next = function() {
-		  $scope.currentIndex < $scope.galleryAlbum.length - 1 ? $scope.currentIndex++ : $scope.currentIndex = 0;
+		$rootScope.next = function() {
+		  $rootScope.currentIndex < $rootScope.galleryAlbum.length - 1 ? $rootScope.currentIndex++ : $rootScope.currentIndex = 0;
 		};
 		 
-		$scope.prev = function() {
-		  $scope.currentIndex > 0 ? $scope.currentIndex-- : $scope.currentIndex = $scope.galleryAlbum.length - 1;
+		$rootScope.prev = function() {
+		  $rootScope.currentIndex > 0 ? $rootScope.currentIndex-- : $rootScope.currentIndex = $rootScope.galleryAlbum.length - 1;
 		};
 
-		$scope.$watch('currentIndex', function(newval, oldval) {
-		  $scope.galleryAlbum.forEach(function(image) {
+		$rootScope.$watch('currentIndex', function(newval, oldval) {
+		  $rootScope.galleryAlbum.forEach(function(image) {
 		    image.visible = false; // make every image invisible
 		    // console.log(image);
 		  });
 		 
-		  $scope.galleryAlbum[$scope.currentIndex].visible = true; // make the current image visible
+		  $rootScope.galleryAlbum[$rootScope.currentIndex].visible = true; // make the current image visible
 		});	
 	}
 	
