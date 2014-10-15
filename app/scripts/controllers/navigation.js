@@ -19,7 +19,7 @@ angular.module('milkandleadApp')
         var section = 'slide-'+section
     	var someElement = angular.element(document.getElementById(section));
     	var tenda = angular.element(document.getElementById('tenda_wrapper'));
-    	tenda.scrollToElementAnimated(someElement,0,1000);
+    	tenda.scrollToElementAnimated(someElement,0,3000);
     }
 
     // console.log($location.path())
